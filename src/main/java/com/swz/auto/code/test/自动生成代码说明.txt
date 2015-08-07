@@ -1,0 +1,26 @@
+自动生成代码说明
+	JavaBean
+		生成数据库中所有的表的model实体类
+	MyBatis
+		生成XML协议下的数据库增删查改操作代码(所有都由上层代码控制)
+	DAO(基于MyBatis的Repository层)
+		生成基于MYBATIS的XML协议的数据操作获取保存(插入和更新_必须有唯一键在数据库列表中)删除(必须有主键)
+	Service（基于DAO的服务层）
+		服务层代码比较复杂，涉及主要业务流程，一般需要手动编写
+	Controller(基于Service的控制层)
+		控制层获取用户提交的数据之后，将数据分为DTO和page请求。对于数据传输请求，直接使用XML/JSON格式数据交互
+		对于使用page页面请求，使用模板数据JSTL模板展现;对于文件数据下载请求，直接Response的输出方式输出文件（
+		注意：上传文件数据，也是使用XML/JSON格式回复客户端）
+	View（基于Controller的数据展现层）
+		1.使用适配器方式将model层进行VO话，使其可以为view层展现使用(同时屏蔽内部参数)
+		2.使用JSTL进行数据展现，对于同一内容模板只需要添加或更改VO的内部参数
+		3.使用第三方JS库进行客户端数据操作(类似jQuery，ExtJs等)
+		4.JS的MVC库文件AngularJS(默认讲解)，Backbone等（AngularJS VS. Backbone.js VS. Ember.js）https://www.airpair.com/js/javascript-framework-comparison
+	技术总结
+		目前View层代码的生成还没有编写，主要是不会AngularJS，等会了之后在来补充吧
+		
+		
+	新的补充：：（将在版本2中显现出来）
+		对于Mybatis的自动生成代码，目前要修改Dao层的原始意图，不采用每个表都创建原生代码，而是采用通用Dao访问层代替，具体如下
+		1.Dao端 访问命名空间(namespace)固定为mysql(数据库类型).dao.table(表名).insert(操作名称) 参数修改为：map，便于添加删除元素(例如：分页的page信息)
+		2.Xml端 增加Map访问信息，like(智能匹配),order(按行排序),limit(分页显示)

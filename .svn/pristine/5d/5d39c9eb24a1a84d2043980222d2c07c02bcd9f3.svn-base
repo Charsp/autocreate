@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mysql.dao.WeiXinApp.active">
+
+	<!-- +++++++++++++++++++++++++++ 二级缓存 ++++++++++++++++++++++++++++++++++ -->
+	<cache />
+
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!-- +++++++++++++++++++++++++++ active数据操作 +++++++++++++++++++++++++++ -->
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+	<!-- activeWhereSql预处理(自动生成代码) -->
+	<sql id="activeWhereSql">
+		from active
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<if test="active!=null">
+				<if test="active.name != null "> AND `name` = #{active.name} </if>
+				<if test="active.id != null "> AND `id` = #{active.id} </if>
+			</if>
+			AND 1=1
+		</trim>
+		<if test="page!=null">
+			<if test="page.currentPage!=null and page.pageSize!=null ">
+				limit
+				#{page.position},#{page.pageSize}
+			</if>
+		</if>
+		<!-- limit 0,#{page.currentPage} -->
+	</sql>
+	<!-- activeSetSql预处理(自动生成代码) -->
+	<sql id="activeSetSql">
+		active
+		<trim prefix="set" suffixOverrides=",">
+			<if test="id != null "> `id` = #{id}, </if>
+			<if test="name != null "> `name` = #{name}, </if>
+			<if test="department != null "> `department` = #{department}, </if>
+			<if test="chance != null "> `chance` = #{chance}, </if>
+			<if test="maxaward != null "> `maxaward` = #{maxaward}, </if>
+			<if test="address != null "> `address` = #{address}, </if>
+			<if test="actived != null "> `actived` = #{actived}, </if>
+			<if test="startdate != null "> `startdate` = #{startdate}, </if>
+			<if test="enddate != null "> `enddate` = #{enddate}, </if>
+			<if test="remark != null "> `remark` = #{remark}, </if>
+		</trim>
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<choose>
+				<when test="name != null">name = #{name}</when>
+				<otherwise>
+					AND id = #{id}
+				</otherwise>
+			</choose>
+		</trim>
+	</sql>
+	<!-- active预处理(自动生成代码) -->
+	<insert id="insert_active" parameterType="active">
+		<selectKey keyProperty="active.id" resultType="java.lang.Integer">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into active
+		(`name`,`department`,`chance`,`maxaward`,`address`,`actived`,`startdate`,`enddate`,`remark`)
+		values
+		(#{active.name},#{active.department},#{active.chance},#{active.maxaward},#{active.address},#{active.actived}
+		,#{active.startdate},#{active.enddate},#{active.remark})
+	</insert>
+	<!-- 删除active行 -->
+	<delete id="delete_active" parameterType="active">
+		delete from
+		active
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<choose>
+				<when test="name != null">name = #{name}</when>
+				<when test="id !=null">
+					<if test="id !=null">AND id = #{id}</if>
+				</when>
+				<otherwise>
+					1=2
+				</otherwise>
+			</choose>
+		</trim>
+	</delete>
+	<!-- 选择activeby id(无id则返回所有) -->
+	<select id="select_active" resultType="java.util.Map">
+		select id as `active.id`,maxaward as `active.maxaward`, department as
+		`active.department`,chance as `active.chance`
+		<include refid="activeWhereSql" />
+	</select>
+	<!-- 更新active行 -->
+	<update id="update_active" parameterType="active">
+		update
+		<include refid="activeSetSql" />
+	</update>
+
+</mapper>

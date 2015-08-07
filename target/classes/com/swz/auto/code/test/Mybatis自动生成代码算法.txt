@@ -1,0 +1,2 @@
+XML生成代码详解
+	首先生成select使用的SQL(WhereSql)和update使用的SQL(SetSql)

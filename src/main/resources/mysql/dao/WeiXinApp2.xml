@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC  
+"-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties" />
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25000" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="active" type="com.charsboll.data.model.Active" />
+		<typeAlias alias="active_question" type="com.charsboll.data.model.Active_question" />
+		<typeAlias alias="activeshare" type="com.charsboll.data.model.Activeshare" />
+		<typeAlias alias="adminuser" type="com.charsboll.data.model.Adminuser" />
+		<typeAlias alias="analysis" type="com.charsboll.data.model.Analysis" />
+		<typeAlias alias="awarder" type="com.charsboll.data.model.Awarder" />
+		<typeAlias alias="awarders" type="com.charsboll.data.model.Awarders" />
+		<typeAlias alias="content" type="com.charsboll.data.model.Content" />
+		<typeAlias alias="logs" type="com.charsboll.data.model.Logs" />
+		<typeAlias alias="manager" type="com.charsboll.data.model.Manager" />
+		<typeAlias alias="mapping" type="com.charsboll.data.model.Mapping" />
+		<typeAlias alias="menu" type="com.charsboll.data.model.Menu" />
+		<typeAlias alias="prizes" type="com.charsboll.data.model.Prizes" />
+		<typeAlias alias="question_answer" type="com.charsboll.data.model.Question_answer" />
+		<typeAlias alias="userLocation" type="com.charsboll.data.model.UserLocation" />
+		<typeAlias alias="wxaccount" type="com.charsboll.data.model.Wxaccount" />
+		<typeAlias alias="wxconfig" type="com.charsboll.data.model.Wxconfig" />
+		<typeAlias alias="wxcontent" type="com.charsboll.data.model.Wxcontent" />
+		<typeAlias alias="wxuser" type="com.charsboll.data.model.Wxuser" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mysql/dao/WeiXinApp/active.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/active_question.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/activeshare.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/adminuser.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/analysis.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/awarder.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/awarders.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/content.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/logs.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/manager.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/mapping.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/menu.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/prizes.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/question_answer.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/userLocation.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxaccount.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxconfig.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxcontent.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxuser.xml" />
+	</mappers>
+</configuration>

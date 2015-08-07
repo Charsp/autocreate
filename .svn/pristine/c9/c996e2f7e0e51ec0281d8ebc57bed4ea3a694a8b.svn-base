@@ -1,0 +1,13 @@
+#数据库基础配置
+jdbc.url=jdbc:mysql://127.0.0.1:3306/weixinapp
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.username=root
+jdbc.password=As123
+maven=true
+#page包路径
+modelpath=com.charsboll.data.model
+#mybatis的XML存放路径
+mybatispath=mysql.dao
+#Dao Layer java文档的生成
+daopath=com.charsboll.dao
+#基础访问数据 

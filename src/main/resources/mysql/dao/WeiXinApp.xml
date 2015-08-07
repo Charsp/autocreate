@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC  
+"-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties" />
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25000" />
+	</settings>
+	<!-- 活动model -->
+	<typeAliases>
+		<typeAlias alias="active" type="com.charsboll.data.model.Active" />
+	</typeAliases>
+	<!-- 活动plugins -->
+	<plugins>
+		<plugin interceptor="com.common.mybatis.page.CacheInterceptor" />
+	</plugins>
+	<!-- 活动plugins -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mysql/dao/WeiXinApp/active.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/active_question.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/activeshare.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/adminuser.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/analysis.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/awarder.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/awarders.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/content.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/logs.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/manager.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/mapping.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/menu.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/prizes.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/question_answer.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/userLocation.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxaccount.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxconfig.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxcontent.xml" />
+		<mapper resource="mysql/dao/WeiXinApp/wxuser.xml" />
+	</mappers>
+</configuration>
