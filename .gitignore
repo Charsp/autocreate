@@ -57,4 +57,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-/target/
+target/
+*.class
+.project
+.svn/
+.settings/
